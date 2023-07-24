@@ -37,7 +37,9 @@ describe("ValidateJsonSchema", () => {
         const result = activity.execute({ data, schema });
         expect(result.isValid).toBe(false);
         expect(result.errors).toBeDefined();
-        expect(result.errors![0].params.missingProperty).toBe("foo");
+        if (result.errors) {
+            expect(result.errors[0].params.missingProperty).toBe("foo");
+        }
     });
     it("throws if data input missing", () => {
         const activity = new ValidateJsonSchema();
