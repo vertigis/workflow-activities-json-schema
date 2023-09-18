@@ -42,6 +42,8 @@ interface ValidateJsonSchemaOutputs {
  * @defaultName jsonSchema
  * @category JSON Schema
  * @description Validates JSON data against a provided JSON schema.
+ * @clientOnly
+ * @supportedApps EXB, GWV, GVH, WAB
  */
 export default class ValidateJsonSchema implements IActivityHandler {
     execute(inputs: ValidateJsonSchemaInputs): ValidateJsonSchemaOutputs {
