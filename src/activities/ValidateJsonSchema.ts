@@ -1,5 +1,6 @@
 import type { IActivityHandler } from "@vertigis/workflow";
 import Ajv from "ajv";
+import addFormats from "ajv-formats"
 
 interface ValidateJsonSchemaInputs {
     /**
@@ -56,9 +57,10 @@ export default class ValidateJsonSchema implements IActivityHandler {
         }
 
         const ajv = new Ajv();
+        addFormats(ajv)
         const validate = ajv.compile(schema);
         const isValid = validate(data);
-        
+
         return {
             isValid,
             errors: validate.errors ? validate.errors: undefined,
