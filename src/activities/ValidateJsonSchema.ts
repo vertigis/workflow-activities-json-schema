@@ -14,6 +14,11 @@ interface ValidateJsonSchemaInputs {
      * @required
      */
     schema: object;
+
+    /**
+     * @description The JSON options for passing to ajv
+     */
+    options?: object
 }
 
 interface ValidateJsonSchemaOutputs {
@@ -48,7 +53,7 @@ interface ValidateJsonSchemaOutputs {
  */
 export default class ValidateJsonSchema implements IActivityHandler {
     execute(inputs: ValidateJsonSchemaInputs): ValidateJsonSchemaOutputs {
-        const { data, schema } = inputs;
+        const { data, schema, options  } = inputs;
         if (!data) {
             throw new Error("data is required");
         }
@@ -56,7 +61,7 @@ export default class ValidateJsonSchema implements IActivityHandler {
             throw new Error("schema is required");
         }
 
-        const ajv = new Ajv();
+        const ajv = new Ajv(options);
         addFormats(ajv)
         const validate = ajv.compile(schema);
         const isValid = validate(data);
