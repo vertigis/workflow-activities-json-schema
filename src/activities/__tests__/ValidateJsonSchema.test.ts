@@ -157,4 +157,33 @@ describe("ValidateJsonSchema", () => {
             }
         });
     });
+
+    describe("options", () => {
+        const data = {
+            bar: "abc",
+            foo: "def",
+        }
+
+        const schema = {
+            type: "object",
+            properties: {
+                foo: { type: "integer" },
+                bar: { type: "integer" },
+            }
+        }
+
+        it("options are optional", () => {
+            const activity = new ValidateJsonSchema();
+            const result = activity.execute({ data, schema });
+            expect(result.isValid).toBe(false);
+            expect(result.errors).toHaveLength(1);
+        });
+
+        it("The 'allErrors' option has an effect", () => {
+            const activity = new ValidateJsonSchema();
+            const result = activity.execute({ data, schema, options: { allErrors: true } });
+            expect(result.isValid).toBe(false);
+            expect(result.errors).toHaveLength(2);
+        });
+    });
 });
