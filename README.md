@@ -26,8 +26,9 @@ To use the JSON Schema activities in [VertiGIS Studio Workflow Designer](https:/
     - Purpose: `Ready To Use`
     - API: `JavaScript`
     - URL: The URL to this activity pack manifest
-        - Use https://unpkg.com/@vertigis/workflow-activities-json-schema/activitypack.json for the latest version
         - Use https://unpkg.com/@vertigis/workflow-activities-json-schema@1.0.0/activitypack.json for a specific version
+        - Use https://unpkg.com/@vertigis/workflow-activities-json-schema@1/activitypack.json for the latest revision of a specific major version
+        - Use https://unpkg.com/@vertigis/workflow-activities-json-schema/activitypack.json for the latest version (not recommended for production use)
         - Use https://localhost:5000/activitypack.json for a local development version
     - Title: Your desired title
     - Tags: Must include `geocortex-workflow-activity-pack`
